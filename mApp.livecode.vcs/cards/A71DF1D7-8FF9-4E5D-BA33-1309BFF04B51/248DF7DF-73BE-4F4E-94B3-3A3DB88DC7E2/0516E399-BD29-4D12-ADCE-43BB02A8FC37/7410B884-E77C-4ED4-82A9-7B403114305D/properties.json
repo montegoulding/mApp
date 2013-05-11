@@ -1,0 +1,58 @@
+{
+  "class": "com.runrev.engine.scrollbar",
+  "customPropertySets": {
+    "cGlx2TimeStamp": {
+      "checksum": "base64Decode(1B2M2Y8AsgTpgAmY7PhCfg==)"
+    },
+    "cREVGeneral": {
+      "revUniqueID": "1234031453129"
+    }
+  },
+  "properties": {
+    "altId": "0",
+    "backColor": "",
+    "behavior": "5EA0680E-B19A-4B85-9573-DAF0833CE916",
+    "blendLevel": "0",
+    "borderColor": "",
+    "borderWidth": "0",
+    "bottomColor": "",
+    "cantSelect": "false",
+    "coloroverlay": "",
+    "disabled": "false",
+    "dropshadow": "",
+    "endValue": "161",
+    "focusColor": "",
+    "foreColor": "",
+    "hiliteColor": "",
+    "id": "1759848",
+    "ink": "srcCopy",
+    "innerglow": "",
+    "innershadow": "",
+    "layer": "24",
+    "lineInc": "10",
+    "lockLoc": "false",
+    "name": "dgHScrollbar",
+    "numberFormat": "",
+    "opaque": "true",
+    "outerglow": "",
+    "pageInc": "161",
+    "rect": "0,394,161,409",
+    "shadowColor": "",
+    "showBorder": "true",
+    "showFocusBorder": "true",
+    "showValue": "false",
+    "startValue": "0",
+    "style": "scrollbar",
+    "textFont": "",
+    "textSize": "",
+    "textStyle": "",
+    "threeD": "true",
+    "thumbPosition": "0",
+    "thumbSize": "161",
+    "topColor": "",
+    "traversalOn": "false",
+    "unicodeToolTip": "",
+    "visible": "true"
+  },
+  "uuid": "7410B884-E77C-4ED4-82A9-7B403114305D"
+}

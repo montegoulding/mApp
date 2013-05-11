@@ -1,0 +1,49 @@
+on selectionChanged pHilitedIndex
+   put the dgDataOfIndex[pHilitedIndex] of me into tData
+   set the icon of btn "icon" of group "image" to tData["id"]
+end selectionChanged
+
+on dragStart
+   if (the dgHeader of the target is empty) then
+      put the dgIndex of the dgDataControl of the target into tIndex
+      put the dgDataOfIndex[tIndex] of me into tDataA
+      set the dragData["text"] to tDataA["id"]
+      set the dragImage to tDataA["id"]
+   end if
+   pass dragStart
+end dragStart
+
+on dragEnd
+   local tObject
+   put the dragDestination into tObject
+   if word 1 of tObject is "button" then
+      set the icon of tObject to the dragData["text"]
+   end if
+   pass dragEnd
+end dragEnd
+
+on dragEnter
+   local tFiles
+   put the dragData["files"] into tFiles
+   filter tFiles with "*[jpg|jpeg|png|gif]"
+   if tFiles is not empty then
+      set the dragAction to "copy"
+   end if
+end dragEnter
+
+on dragDrop
+   local tFiles
+   put the dragData["files"] into tFiles
+   filter tFiles with "*[jpg|jpeg|png|gif]"
+   if tFiles is not empty then
+      addImages tFiles
+   end if
+end dragDrop
+
+on deleteKey
+   deleteImages
+end deleteKey
+
+on backSpaceKey
+   deleteImages
+end backSpaceKey

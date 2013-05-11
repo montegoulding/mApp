@@ -1,0 +1,31 @@
+{
+  "class": "com.runrev.engine.card",
+  "properties": {
+    "altId": "0",
+    "backColor": "",
+    "behavior": "",
+    "blendLevel": "0",
+    "borderColor": "",
+    "borderWidth": "2",
+    "bottomColor": "",
+    "cantDelete": "false",
+    "defaultButton": "",
+    "dontSearch": "false",
+    "focusColor": "",
+    "foreColor": "",
+    "hiliteColor": "",
+    "id": "1002",
+    "ink": "srcCopy",
+    "layer": "1",
+    "mark": "false",
+    "name": "UI Stacks",
+    "shadowColor": "",
+    "showBorder": "false",
+    "textFont": "",
+    "textSize": "",
+    "textStyle": "",
+    "threeD": "true",
+    "topColor": ""
+  },
+  "uuid": "9B0AB498-926E-42F1-91E5-D4687ADC9B34"
+}

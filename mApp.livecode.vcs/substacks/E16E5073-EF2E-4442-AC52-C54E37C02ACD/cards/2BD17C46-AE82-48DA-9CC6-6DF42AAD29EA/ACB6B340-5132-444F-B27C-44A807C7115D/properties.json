@@ -1,0 +1,47 @@
+{
+  "class": "com.runrev.engine.image",
+  "customPropertySets": {
+    "cREVGeneral": {
+      "revUniqueID": "1354233845837"
+    }
+  },
+  "properties": {
+    "altId": "0",
+    "alwaysBuffer": "true",
+    "angle": "0",
+    "behavior": "",
+    "blendLevel": "0",
+    "borderWidth": "2",
+    "cantSelect": "false",
+    "coloroverlay": "",
+    "constantMask": "false",
+    "currentFrame": "1",
+    "disabled": "false",
+    "dontDither": "false",
+    "dropshadow": "",
+    "hotSpot": "1,1",
+    "id": "1014",
+    "ink": "srcCopy",
+    "innerglow": "",
+    "innershadow": "",
+    "layer": "18",
+    "lockLoc": "false",
+    "name": "45-minus.png",
+    "opaque": "false",
+    "outerglow": "",
+    "paintCompression": "png",
+    "palindromeFrames": "false",
+    "rect": "293,198,307,202",
+    "repeatCount": "0",
+    "resizeQuality": "normal",
+    "showBorder": "false",
+    "showFocusBorder": "true",
+    "threeD": "true",
+    "traversalOn": "false",
+    "unicodeToolTip": "",
+    "visible": "true",
+    "xHot": "1",
+    "yHot": "1"
+  },
+  "uuid": "ACB6B340-5132-444F-B27C-44A807C7115D"
+}

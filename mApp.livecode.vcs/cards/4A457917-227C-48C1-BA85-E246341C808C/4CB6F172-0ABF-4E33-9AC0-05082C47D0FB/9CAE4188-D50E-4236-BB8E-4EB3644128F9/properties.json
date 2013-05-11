@@ -1,0 +1,50 @@
+{
+  "class": "com.runrev.engine.image",
+  "customPropertySets": {
+    "cGlx2TimeStamp": {
+      "checksum": ""
+    },
+    "cREVGeneral": {
+      "revUniqueID": "1233978099140"
+    }
+  },
+  "properties": {
+    "altId": "0",
+    "alwaysBuffer": "false",
+    "angle": "0",
+    "behavior": "",
+    "blendLevel": "0",
+    "borderWidth": "1",
+    "cantSelect": "false",
+    "coloroverlay": "",
+    "constantMask": "false",
+    "currentFrame": "1",
+    "disabled": "false",
+    "dontDither": "false",
+    "dropshadow": "",
+    "hotSpot": "1,1",
+    "id": "1062",
+    "ink": "srcCopy",
+    "innerglow": "",
+    "innershadow": "",
+    "layer": "70",
+    "lockLoc": "false",
+    "name": "dgAlternatingRows",
+    "opaque": "true",
+    "outerglow": "",
+    "paintCompression": "png",
+    "palindromeFrames": "false",
+    "rect": "285,286,286,328",
+    "repeatCount": "0",
+    "resizeQuality": "normal",
+    "showBorder": "true",
+    "showFocusBorder": "true",
+    "threeD": "false",
+    "traversalOn": "false",
+    "unicodeToolTip": "",
+    "visible": "false",
+    "xHot": "1",
+    "yHot": "1"
+  },
+  "uuid": "9CAE4188-D50E-4236-BB8E-4EB3644128F9"
+}

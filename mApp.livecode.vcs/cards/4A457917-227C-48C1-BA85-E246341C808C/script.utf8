@@ -1,0 +1,5 @@
+on preOpenCard
+   -- not sure why it's necessary but the card rules datagrid wasn't being set right
+   set the dgData of group "card rules" to the dgData of group "card rules"
+   pass preOpenCard
+end preOpenCard
