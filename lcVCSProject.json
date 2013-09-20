@@ -1,0 +1,7 @@
+{
+  "build path": "<? return revEnvironmentUserPluginsPath() ?>",
+  "name": "mApp",
+  "stackFiles": [
+    "mApp.livecode"
+  ]
+}

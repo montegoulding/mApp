@@ -1,0 +1,6 @@
+on mouseUp
+   put 0 into tProps["min"]
+   put 9999999 into tProps["max"]
+   set the mAppProps["UIStack"] of stack (the label of btn "stacks") to tProps
+   updateUI
+end mouseUp

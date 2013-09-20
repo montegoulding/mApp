@@ -1,0 +1,4 @@
+
+on mouseDown
+   put "no object"&cr&"-"&cr&"card"&cr&cardObjsNotIncluded() into me
+end mouseDown
