@@ -1,4 +1,0 @@
-on menuPick pItemName
-   set the enabled of group "align" to pItemName is "position"
-   pass menuPick
-end menuPick

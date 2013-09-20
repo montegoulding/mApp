@@ -1,7 +1,0 @@
-on mouseDown
-   if the label of btn "direction" is "horizontal" then
-      set the text of me to "center"&cr&"top"&cr&"bottom"&cr&"justify"
-   else
-      set the text of me to "center"&cr&"left"&cr&"right"&cr&"justify"
-   end if
-end mouseDown

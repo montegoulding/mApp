@@ -1,5 +1,0 @@
-on mouseUp
-   answer files "Choose image files" with type "Image files|jpg,jpeg,png,gif"
-   if it is empty then exit mouseUp
-   addImages it
-end mouseUp

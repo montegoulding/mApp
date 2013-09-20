@@ -1,3 +1,0 @@
-on menuPick pItemName
-   go cd pItemName
-end menuPick
