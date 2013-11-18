@@ -166,10 +166,11 @@ on setLayoutProps
          set label of btn "orientation" of card "layout"  to tProps["orientation"]
       end if
       if tProps["type"] = "" then 
-         set label of btn "type" of card "layout"  to "position"
+         set label of btn "type" of card "layout" to "position"
       else
          set label of btn "type" of cd "layout" to tProps["type"]
       end if
+      set the enabled of btn "align" of cd "layout" to label of btn "type" of card "layout" is "position"
       if tProps["align"] = "" then 
          set label of btn "align" of card "layout"  to "center"
       else
@@ -603,6 +604,7 @@ on clearAll
    set the label of me to "mApp (Mobile Application Framework)"
    repeat for each item tSide in "left,top,right,bottom"
       set the text of fld (tSide&" amount") of cd "layout" to ""
+      set the text of btn (tSide&" object") of cd "layout" to ""
       set the label of btn (tSide&" object") of cd "layout" to " "
       set the label of btn (tSide&" side of object") of cd "layout" to " "
    end repeat
@@ -613,4 +615,5 @@ on clearAll
    set the text of fld "padding" of cd "layout" to ""
    set the text of btn "align" of cd "layout" to ""
    set the label of btn "align"of cd "layout"  to "center"
+   set the enabled of btn "align" of cd "layout" to true
 end clearAll

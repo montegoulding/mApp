@@ -25,7 +25,7 @@
     "cantDelete": "false",
     "cantSelect": "false",
     "colorOverlay": "",
-    "disabled": "true",
+    "disabled": "false",
     "dontSearch": "false",
     "dropShadow": "",
     "focusColor": "",

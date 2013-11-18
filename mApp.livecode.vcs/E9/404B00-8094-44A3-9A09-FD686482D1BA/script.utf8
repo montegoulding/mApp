@@ -407,7 +407,9 @@ private command _mAppUpdateLayoutRule pRule,pScale
                         try -- may trigger other script errors causing a halt in execution
                            switch pRule["align"]
                               case "center"
-                                 set the rect of control id pRule["objects"][tObjectIndex]["id"] to tRuleRect["left"],tRuleRect["center"]-the height of control id pRule["objects"][tObjectIndex]["id"] div 2,tRuleRect["left"]+the width of  control id pRule["objects"][tObjectIndex]["id"],tRuleRect["center"]+the height of control id pRule["objects"][tObjectIndex]["id"] div 2
+                                 local tTop
+                                 put tRuleRect["center"]-the height of control id pRule["objects"][tObjectIndex]["id"] div 2 into tTop
+                                 set the rect of control id pRule["objects"][tObjectIndex]["id"] to tRuleRect["left"],tTop,tRuleRect["left"]+the width of control id pRule["objects"][tObjectIndex]["id"],tTop+the height of control id pRule["objects"][tObjectIndex]["id"]
                                  break
                               case "top"
                                  set the rect of control id pRule["objects"][tObjectIndex]["id"] to tRuleRect["left"],tRuleRect["top"],tRuleRect["left"]+the width of  control id pRule["objects"][tObjectIndex]["id"],tRuleRect["top"]+the height of control id pRule["objects"][tObjectIndex]["id"]
@@ -452,7 +454,9 @@ private command _mAppUpdateLayoutRule pRule,pScale
                         try -- may trigger other script errors causing a halt in execution
                            switch pRule["align"]
                               case "center"
-                                 set the rect of control id pRule["objects"][tObjectIndex]["id"] to tRuleRect["center"]-the width of control id pRule["objects"][tObjectIndex]["id"] div 2,tRuleRect["top"],tRuleRect["center"]+the width of control id pRule["objects"][tObjectIndex]["id"] div 2,tRuleRect["top"]+the height of  control id pRule["objects"][tObjectIndex]["id"]
+                                 local tLeft
+                                 put tRuleRect["center"]-the with of control id pRule["objects"][tObjectIndex]["id"] div 2 into tTop
+                                 set the rect of control id pRule["objects"][tObjectIndex]["id"] to tLeft,tRuleRect["top"],tLeft+the width of control id pRule["objects"][tObjectIndex]["id"],tRuleRect["top"]+the height of  control id pRule["objects"][tObjectIndex]["id"]
                                  break
                               case "left"
                                  set the rect of control id pRule["objects"][tObjectIndex]["id"] to tRuleRect["left"],tRuleRect["top"],tRuleRect["left"]+the width of  control id pRule["objects"][tObjectIndex]["id"],tRuleRect["top"]+the height of control id pRule["objects"][tObjectIndex]["id"]

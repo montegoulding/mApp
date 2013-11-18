@@ -28,7 +28,7 @@
     "cantSelect": "false",
     "colorOverlay": "",
     "default": "false",
-    "disabled": "false",
+    "disabled": "true",
     "disabledIcon": "0",
     "dropShadow": "",
     "family": "0",
