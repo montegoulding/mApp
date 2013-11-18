@@ -2,9 +2,6 @@
   "UUID": "B5019C00-0B17-44C6-BAD0-1934E5E4C8A8",
   "class": "com.runrev.engine.graphic",
   "customPropertySets": {
-    "cGlx2TimeStamp": {
-      "checksum": ""
-    },
     "cREVGeneral": {
       "revUniqueID": "1236188559392"
     }

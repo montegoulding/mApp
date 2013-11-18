@@ -102,7 +102,8 @@ function mAppNativeResolutionIndependence
 end mAppNativeResolutionIndependence
 
 function mAppParadigm
-   put max(item 3 to 4 of the screenRect)/mAppPixelDensity() into tScreenSize
+   local tScreenSize
+   put max(the width of stack sUIStack,the height of stack sUIStack)/mAppPixelDensity() into tScreenSize
    if tScreenSize < 800 then
       return "phone"
    else
@@ -217,8 +218,8 @@ command mAppUpdateLayoutRule pRuleName
    end repeat
 end mAppUpdateLayoutRule
 
-private on _mAppUpdateLayoutRule pRule,pScale
-   local tList,tObjects,tRelativeObject,tRuleRect,tSize,tObjectWidth,tObjectHeight,tCardWidth,tActive=true,tRemainder,tRemainderShift
+private command _mAppUpdateLayoutRule pRule,pScale
+   local tList,tObjects,tRelativeObject,tRuleRect,tSize,tObjectWidth,tObjectHeight,tCardWidth,tActive="true",tRemainder,tRemainderShift
    put keys(pRule["objects"]) into tObjects
    sort tObjects numeric
    -- filter out any objects that don't exist
@@ -234,6 +235,7 @@ private on _mAppUpdateLayoutRule pRule,pScale
             pRule["active"]["max"] is an integer and tCardWidth > pRule["active"]["max"] then
          put false into tActive
       end if
+      
       if tActive then
          -- work out what we do for this orientation
          if pRule["orientation"] is not "both" then 
@@ -248,14 +250,25 @@ private on _mAppUpdateLayoutRule pRule,pScale
             end if
          end if
       end if
+      
       if pRule["hide"] is true then
          repeat for each line tObjectIndex in tObjects
             set the visible of control id pRule["objects"][tObjectIndex]["id"] to tActive
          end repeat
       end if
+      
+      if tActive then
+         -- allow the user to define a custom filter for rules
+         dispatch function "mAppShouldRunRule" to the target with pRule["name"]
+         if it is not "unhandled" then
+            put the result into tActive
+         end if
+      end if
+      
       if not tActive then
          exit _mAppUpdateLayoutRule
       end if
+      
       -- calculate space to draw objects in
       --- first find fixed points
       repeat for each item tSide in "left,top,right,bottom"
@@ -686,10 +699,19 @@ end _mAppGetCaller
 
 on errorDialog pError
    if the environment is "mobile" then
+      local tObject
       put item -1 of line -1 of pError into tObject
+      
+      local tHandler
       put item -1 of line -2 of pError into tHandler
+      
+      local tLine
       put item 2 of line -2 of pError into tLine
+      
+      local tScriptLine
       put line tLine of the script of tObject into tScriptLine
+      
+      local tRuggedName
       if word 1 of tObject is "stack" then
          put the abbrev name of tObject into tRuggedName
       else

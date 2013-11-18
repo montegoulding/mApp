@@ -2,9 +2,6 @@
   "UUID": "7602433D-A95B-4622-A8A4-7B6112DA30AA",
   "class": "com.runrev.engine.scrollbar",
   "customPropertySets": {
-    "cGlx2TimeStamp": {
-      "checksum": "base64Decode(1B2M2Y8AsgTpgAmY7PhCfg==)"
-    },
     "cREVGeneral": {
       "revUniqueID": "1355276017677"
     }
@@ -22,7 +19,6 @@
     "bottomPattern": "",
     "cantSelect": "false",
     "colorOverlay": "",
-    "colors": "\n\n\n\n\n\n\n",
     "disabled": "false",
     "dropShadow": "",
     "endValue": "164",

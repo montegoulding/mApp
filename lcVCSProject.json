@@ -1,6 +1,15 @@
 {
   "build path": "<? return revEnvironmentUserPluginsPath() ?>",
   "name": "mApp",
+  "plugins": [
+    "cRevGeneral",
+    "cREVGeometryCache",
+    "cRevStandaloneSettings",
+    "dataviewProps",
+    "dgProps",
+    "GLX2"
+  ],
+  "resource paths": "",
   "stackFiles": [
     "mApp.livecode"
   ]

@@ -17,6 +17,7 @@ end revResumeStack
 
 on revSelectedObjectChanged
    set the enabled of btn "add objects" of card "layout" to selObjsNotIncluded() <> ""
+   local tButton
    put false into tButton
    repeat for each line tObject in the selectedObjects
       if word 1 of tObject is "button" then
@@ -32,6 +33,8 @@ on revSelectedObjectChanged
          exit repeat
       end if
    end repeat
+   
+   local tRect
    put the rect of group "image" of cd "images" into tRect
    if tButton then
       if the backPattern of tObject is empty then
@@ -42,7 +45,7 @@ on revSelectedObjectChanged
       show group "icons" of cd "images"
       put the top of group "icons" of cd "images" into item 4 of tRect
    else
-      set the backColor of btn "icon" of group "image" of cd "images" to gray
+      set the backColor of btn "icon" of group "image" of cd "images" to "gray"
       hide group "icons" of cd "images"
       put the bottom of group "icons" of cd "images" into item 4 of tRect
    end if
@@ -239,6 +242,8 @@ on deleteRule
       if tIndex is "" then exit deleteRule
    end if
    dispatch "DeleteIndex" to group (tRuleType&&"rules") with tIndex
+   
+   local tProps
    put the customProperties["mAppProps"] of tRuleOwner into tProps
    delete variable tProps["layout"][tIndex]
    if tProps["layout"] is not an array then
@@ -335,6 +340,10 @@ on updateUI
       set the menuHistory of btn "tab" to the number of this cd
       if the behavior of stack the mainstack of the topStack is not empty and \
             the long id of the behavior of stack the mainstack of the topStack = the long id of button "Mainstack Behavior" of stack "mAppLibrary" then
+         
+         -- update referenced images
+         UpdateReferencedImages
+         
          put the substacks of stack the mainstack of the topStack into tSubstacks
          sort tSubstacks
          put tSubstacks into tStacks
@@ -416,6 +425,79 @@ on updateUI
    end try
 end updateUI
 
+command UpdateReferencedImages
+   local tFolder,tOldFolder,tIconStack
+   
+   # get referenced image array
+   put the substacks of stack the mainstack of the topstack into tIconStack
+   filter tIconStack with "mAppImages *"
+   
+   local tReferencedImages,tFileName
+   if tIconStack is not empty then
+      # create a mAppImages substack when required
+      repeat with tImage = 1 to the number of images of stack tIconStack
+         put the filename of image tImage of stack tIconStack into tFileName
+         if tFileName is not empty then
+            put true into tReferencedImages[tFileName]
+         end if
+      end repeat
+   end if
+   
+   put the effective filename of the topStack into tFolder
+   set the itemDelimiter to slash
+   put "images" into item -1 of tFolder
+   if there is a folder tFolder then
+      put the folder into tOldFolder
+      set the folder to tFolder
+      
+      local tFiles,tFile,tImagesToAdd
+      put the files into tFiles
+      
+      # filter out .DS_Store etc
+      filter tFiles without ".*"
+      
+      set the itemDel to "."
+      repeat for each line tFile in tFiles
+         if item -1 of tFile is among the words of "png jpg jpeg gif" then
+            StripDensity tFile
+            # check if the file is already imported
+            if not tReferencedImages["images/"&tFile] then
+               if tIconStack is empty then
+                  CreateIconStack the mainstack of the topStack
+                  put the result into tIconStack
+               end if
+               
+               put true into tImagesToAdd[tFile]
+               
+            end if
+         end if
+      end repeat
+      
+      if tImagesToAdd is an array then
+         set the visible of stack tIconStack to false
+         go tIconStack
+         repeat for each key tFile in tImagesToAdd
+            create image tFile
+            set the filename of image tFile of cd 1 of stack tIconStack to "images/"&tFile
+         end repeat
+         close stack tIconStack
+         set the visible of stack tIconStack to true
+      end if
+      
+      set the folder to tOldFolder
+   end if
+end UpdateReferencedImages
+
+command StripDensity @pFile
+   repeat for each word tDensity in "ultra-low extra-low low medium high extra-high 2x ultra-high"
+      if pFile contains "@" then
+         replace "@"&tDensity&"." with "." in pFile
+      else
+         exit repeat
+      end if
+   end repeat
+end StripDensity
+
 on newApp
    local tName,tMain,tUI,tProps
    reset the templateStack
@@ -463,14 +545,9 @@ command addImages pFilePaths
    put the substacks of stack tMain into tSubstacks
    filter tSubstacks with "mAppImages *"
    put line 1 of tSubstacks into tIconStack
-   if tIconStack is empty then 
-      put "mAppImages "&the seconds into tIconStack
-      create invisible stack tIconStack
-      -- a clumsy attempt at id namespace... should work reasonably well
-      set the id of stack tIconStack to random(2100000000)+300000
-      set the mainstack of stack tIconStack to tMain
-      close stack tIconStack
-      set the visible of stack tIconStack to true
+   if tIconStack is empty then
+      CreateIconStack tMain
+      put the result into tIconStack
    end if
    set the itemDel to "."
    set the visible of stack tIconStack to false
@@ -493,6 +570,17 @@ command addImages pFilePaths
    return tData["id"]
 end addImages
 
+command CreateIconStack pMainstack
+   local tIconStack
+   put "mAppImages "&the seconds into tIconStack
+   create invisible stack tIconStack
+   -- a clumsy attempt at id namespace... should work reasonably well
+   set the id of stack tIconStack to random(2100000000)+300000
+   set the mainstack of stack tIconStack to pMainstack
+   close stack tIconStack
+   set the visible of stack tIconStack to true
+end CreateIconStack
+
 on lcVCSExport
    if the target is not me then exit lcVCSExport
    clearAll
@@ -505,12 +593,15 @@ on clearAll
    set the icon of btn "icon" of group "hilitedIcon" of cd "images" to 0
    set the icon of btn "icon" of group "disabledIcon" of cd "images" to 0
    set the dgData of group "uistacks" of cd "UI stacks" to ""
+   set the text of btn "stacks" of cd "UI Stacks" to ""
    set the label of btn "stacks" of cd "ui stacks" to " "
+   set the text of fld "min active" of cd "Layout" to "0"
+   set the text of fld "max active" of cd "Layout" to "65535"
    set the dgData of group "card rules" of cd "Layout" to ""
    set the dgData of group "stack rules" of cd "Layout" to ""
    set the dgData of group "objects" of cd "Layout" to ""
    set the label of me to "mApp (Mobile Application Framework)"
-  repeat for each item tSide in "left,top,right,bottom"
+   repeat for each item tSide in "left,top,right,bottom"
       set the text of fld (tSide&" amount") of cd "layout" to ""
       set the label of btn (tSide&" object") of cd "layout" to " "
       set the label of btn (tSide&" side of object") of cd "layout" to " "

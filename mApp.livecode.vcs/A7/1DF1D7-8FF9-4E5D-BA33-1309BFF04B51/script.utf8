@@ -1,17 +1,39 @@
 on deleteImages
    local tSubstacks,tIconStack,tIndex,tIndexes
    put the dgHilitedIndexes of group "images" into tIndexes
-   if tIndexs is not empty then
+   if tIndexes is not empty then
       put the substacks of stack the mainstack of the topStack into tSubstacks
       filter tSubstacks with "mAppImages *"
       put line 1 of tSubstacks into tIconStack
+      local tPath,tFileName
+      put the effective filename of the topStack into tPath
+      set the itemDelimiter to slash
+      delete item -1 of tPath
       if tIconStack is not empty then
          repeat for each item tIndex in tIndexes
             put the dgDataOfIndex[tIndex] of group "images" into tData
-            if there is an image id tData["id"] of stack tIconStack then
-               delete image id tData["id"] of stack tIconStack
+            put the filename of image id tData["id"] of stack tIconStack into tFileName
+            if tFileName is not empty and item 1 of tFileName is "images" then
+               delete item 1 of tFileName
+               StripDensity tFileName
+               set the itemDelimiter to "."
+               -- delete all the files
+               repeat for each item tDensity in ".ultra-low.extra-low.low.medium.high.extra-high.2x.ultra-high"
+                  if tDensity is empty then
+                     put "."& item 2 to -1 of tFileName into tExtension
+                  else
+                     put "@"&tDensity&"."&item 2 to -1 of tFileName into tExtension
+                  end if
+                  if there is a file (tPath & slash & "images" & slash & item 1 of tFileName & tExtension) then
+                     delete file (tPath & slash & "images" & slash & item 1 of tFileName & tExtension)
+                  end if
+               end repeat
+               if there is an image id tData["id"] of stack tIconStack then
+                  delete image id tData["id"] of stack tIconStack
+               end if
+               dispatch "DeleteIndex" to group "images" with tIndex
+               set the itemDelimiter to slash
             end if
-            dispatch "DeleteIndex" to group "images" with tIndex
          end repeat
       end if
    end if
