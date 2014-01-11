@@ -1,11 +1,6 @@
 {
   "UUID": "CA1D4E93-44A2-4F93-B784-DB5B68C55BAD",
   "class": "com.runrev.engine.image",
-  "customPropertySets": {
-    "cREVGeneral": {
-      "revUniqueID": "1233978099140"
-    }
-  },
   "properties": {
     "altId": "0",
     "alwaysBuffer": "false",
@@ -26,7 +21,6 @@
     "disabled": "false",
     "dontDither": "false",
     "dropShadow": "",
-    "fileName": "",
     "focusColor": "",
     "focusPattern": "",
     "foreColor": "",

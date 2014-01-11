@@ -1,14 +1,6 @@
 {
   "UUID": "18DE7F79-8F45-4D2D-ADE0-4DFA04A69697",
   "class": "com.runrev.engine.field",
-  "customPropertySets": {
-    "cREVGeneral": {
-      "revUniqueID": "1354245263386"
-    },
-    "cREVTable": {
-      "currentview": ""
-    }
-  },
   "properties": {
     "altId": "0",
     "autoHilite": "true",

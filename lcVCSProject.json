@@ -2,12 +2,16 @@
   "build path": "<? return revEnvironmentUserPluginsPath() ?>",
   "name": "mApp",
   "plugins": [
-    "cRevGeneral",
+    "cREVGeneralAll",
+    "cREVGeometry",
     "cREVGeometryCache",
     "cRevStandaloneSettings",
+    "cREVTable",
     "dataviewProps",
     "dgProps",
-    "GLX2"
+    "GLX2",
+    "mAppProps",
+    "uSelectedChunk"
   ],
   "resource paths": "",
   "stackFiles": [

@@ -1,14 +1,6 @@
 {
   "UUID": "06A829A2-7FD5-41D3-9F81-5CE2848CE04C",
   "class": "com.runrev.engine.field",
-  "customPropertySets": {
-    "cREVGeneral": {
-      "revUniqueID": "1354234404756"
-    },
-    "cREVTable": {
-      "currentview": "Add substack as UI stack"
-    }
-  },
   "properties": {
     "altId": "0",
     "autoHilite": "false",

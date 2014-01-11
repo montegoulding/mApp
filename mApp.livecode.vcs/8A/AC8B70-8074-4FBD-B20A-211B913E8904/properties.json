@@ -1,14 +1,6 @@
 {
   "UUID": "8AAC8B70-8074-4FBD-B20A-211B913E8904",
   "class": "com.runrev.engine.field",
-  "customPropertySets": {
-    "cREVGeneral": {
-      "revUniqueID": "1355276055707"
-    },
-    "cREVTable": {
-      "currentview": "Card layout rules"
-    }
-  },
   "properties": {
     "altId": "0",
     "autoHilite": "true",

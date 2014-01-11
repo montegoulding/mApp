@@ -2,9 +2,6 @@
   "UUID": "F8B6A9A6-A5D2-4210-9A1E-0D28D6CB3A7F",
   "class": "com.runrev.engine.group",
   "customPropertySets": {
-    "cREVGeneral": {
-      "revUniqueID": "1354232369806"
-    },
     "dgCache": {
       "data": "",
       "sequencing": ""
