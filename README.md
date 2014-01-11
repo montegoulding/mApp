@@ -11,7 +11,7 @@ Support the project by using me as a [consultant](http://goulding,ws) or by buyi
 Ask it on [StackOverflow](http://stackoverflow.com) and it shall be answered.
 
 ##Binaries
-This project uses [lcVCS](http://github.com/montegoulding/lcVCS) to enable version control of a [LiveCode](http://livecode.com) project.
+This project uses lcVCS to enable version control of a LiveCode project.
 
 Binary stackFiles for this external are available under a free account at [mergExt](http://mergext.com) so there's no point duplicating here.
 
