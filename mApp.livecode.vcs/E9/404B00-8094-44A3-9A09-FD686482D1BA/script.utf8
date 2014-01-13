@@ -98,7 +98,7 @@ end mAppPixelDensity
 
 function mAppNativeResolutionIndependence
    set the itemDelimiter to "."
-   return item 1 to 2 of the version > 6.5
+   return item 1 to 2 of the version >= 6.5
 end mAppNativeResolutionIndependence
 
 function mAppParadigm
